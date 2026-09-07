@@ -1,0 +1,62 @@
+services:
+
+  mysql:
+    image: mysql:8.0.35
+    container_name: ecommerce-mysql
+    restart: unless-stopped
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: full-stack-ecommerce
+    
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./01-starter-files/db-scripts:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+    networks:
+      - ecommerce-network
+  
+  backend:
+    build:
+      context: ./02-backend
+      dockerfile: Dockerfile
+    container_name: ecommerce-backend
+    restart: unless-stopped
+
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/full-stack-ecommerce?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: ecommerceapp
+      SPRING_DATASOURCE_PASSWORD: ecommerceapp
+
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+    networks:
+      - ecommerce-network
+  
+  frontend:
+    build:
+      context: ./03-frontend/angular-ecommerce
+      dockerfile: Dockerfile
+    container_name: ecommerce-frontend
+    restart: unless-stopped
+
+    ports:
+      - "8082:80"
+    depends_on:
+      - backend
+    networks:
+      - ecommerce-network
+    
+networks:
+  ecommerce-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
