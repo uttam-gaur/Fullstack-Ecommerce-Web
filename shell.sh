@@ -19,8 +19,7 @@ echo "=========================================="
 echo "         INSTALLING DOCKER COMPOSE"
 echo "=========================================="
 
-sudo apt install -y docker-compose-plugin
-
+sudo apt install -y docker-compose-v2
 echo "=========================================="
 echo "       VERIFYING DOCKER & COMPOSE"
 echo "=========================================="
