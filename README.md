@@ -156,7 +156,7 @@ This stops and removes the containers while preserving the MySQL data stored in 
 
 To remove the containers and database volume:
 
-    docker compose down -v
+    docker compose down -v` deletes the MySQL Docker volume and all stored database data.
 
 
 > **Warning:** `docker compos
@@ -195,5 +195,5 @@ The application follows a 3-tier architecture:
               Docker Network
               ecommerce-network
 
-e down -v` deletes the MySQL Docker volume and all stored database data.
+
 
