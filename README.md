@@ -89,41 +89,6 @@ This project demonstrates how to take an existing full-stack application and app
 - Git & GitHub
 
 ---
-
-# 🏗️ Architecture
-
-The application follows a 3-tier architecture:
-
-```text
-                         INTERNET
-                             |
-                             v
-                    +----------------+
-                    |   Nginx        |
-                    | Angular        |
-                    | Frontend       |
-                    +-------+--------+
-                            |
-                         /api/*
-                            |
-                            v
-                    +----------------+
-                    | Spring Boot    |
-                    | Backend        |
-                    | Java 17        |
-                    +-------+--------+
-                            |
-                            |
-                            v
-                    +----------------+
-                    |    MySQL 8     |
-                    |    Database    |
-                    +----------------+
-
-              All services run inside
-              Docker Network
-              ecommerce-network
-
 ## ▶️ Run the Application
 
 ### 1. Clone the Repository
@@ -194,5 +159,41 @@ To remove the containers and database volume:
     docker compose down -v
 
 
-> **Warning:** `docker compose down -v` deletes the MySQL Docker volume and all stored database data.
+> **Warning:** `docker compos
+
+# 🏗️ Architecture
+
+The application follows a 3-tier architecture:
+
+```text
+                         INTERNET
+                             |
+                             v
+                    +----------------+
+                    |   Nginx        |
+                    | Angular        |
+                    | Frontend       |
+                    +-------+--------+
+                            |
+                         /api/*
+                            |
+                            v
+                    +----------------+
+                    | Spring Boot    |
+                    | Backend        |
+                    | Java 17        |
+                    +-------+--------+
+                            |
+                            |
+                            v
+                    +----------------+
+                    |    MySQL 8     |
+                    |    Database    |
+                    +----------------+
+
+              All services run inside
+              Docker Network
+              ecommerce-network
+
+e down -v` deletes the MySQL Docker volume and all stored database data.
 
