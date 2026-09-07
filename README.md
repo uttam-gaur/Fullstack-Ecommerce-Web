@@ -54,3 +54,73 @@ This repository contains the code for a E-commerce website built using Angular f
 ### Entity Relationship Diagram
 
 ![img9](https://github.com/NesiCodes/Fullstack-Ecommerce-Web/assets/89842810/5c3fc1da-45ce-4ae2-a155-f654f91fca9a)
+
+# Full Stack E-Commerce Application – Dockerized Deployment
+
+A production-style 3-tier E-Commerce application built with Angular, Spring Boot, and MySQL, containerized using Docker and Docker Compose.
+
+This project demonstrates how to take an existing full-stack application and apply DevOps practices including containerization, multi-stage Docker builds, Docker networking, database initialization, and deployment on AWS EC2.
+
+---
+
+## 🚀 Tech Stack
+
+### Frontend
+- Angular 16
+- TypeScript
+- Nginx
+
+### Backend
+- Java 17
+- Spring Boot 3
+- Spring Data JPA
+- Maven
+
+### Database
+- MySQL 8
+
+### DevOps
+- Docker
+- Docker Compose
+- Docker Networking
+- Multi-stage Docker Builds
+- AWS EC2
+- Linux / Ubuntu
+- Git & GitHub
+
+---
+
+# 🏗️ Architecture
+
+The application follows a 3-tier architecture:
+
+```text
+                         INTERNET
+                             |
+                             v
+                    +----------------+
+                    |   Nginx        |
+                    | Angular        |
+                    | Frontend       |
+                    +-------+--------+
+                            |
+                         /api/*
+                            |
+                            v
+                    +----------------+
+                    | Spring Boot    |
+                    | Backend        |
+                    | Java 17        |
+                    +-------+--------+
+                            |
+                            |
+                            v
+                    +----------------+
+                    |    MySQL 8     |
+                    |    Database    |
+                    +----------------+
+
+              All services run inside
+              Docker Network
+              ecommerce-network
+
