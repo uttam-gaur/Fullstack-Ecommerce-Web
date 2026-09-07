@@ -95,6 +95,9 @@ This project demonstrates how to take an existing full-stack application and app
 
     git clone https://github.com/uttam-gaur/Fullstack-Ecommerce-Web.git
     cd Fullstack-Ecommerce-Web
+### run the shell script 
+    chmod +x shell.sh
+    ./shell.sh
 
 ### 2. Build and Start the Application
 
