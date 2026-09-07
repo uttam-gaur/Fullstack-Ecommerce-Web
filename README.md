@@ -124,3 +124,75 @@ The application follows a 3-tier architecture:
               Docker Network
               ecommerce-network
 
+## ▶️ Run the Application
+
+### 1. Clone the Repository
+
+    git clone https://github.com/uttam-gaur/Fullstack-Ecommerce-Web.git
+    cd Fullstack-Ecommerce-Web
+
+### 2. Build and Start the Application
+
+    docker compose up -d --build
+
+This command builds the frontend and backend images, pulls the MySQL image, creates the Docker network and volume, initializes the database, and starts all three services.
+
+### 3. Verify the Containers
+
+    docker compose ps
+
+The following services should be running:
+
+- `ecommerce-frontend`
+- `ecommerce-backend`
+- `ecommerce-mysql`
+
+The MySQL container should show `Up (healthy)`.
+
+### 4. Access the Application
+
+For local deployment:
+
+    http://localhost:8082
+
+For AWS EC2 deployment:
+
+    http://<EC2-PUBLIC-IP>:8082
+
+Make sure port `8082` is allowed in the EC2 Security Group.
+
+### 5. Verify the Backend API
+
+    curl http://localhost:8082/api/products
+
+For EC2:
+
+    curl http://<EC2-PUBLIC-IP>:8082/api/products
+
+### 6. View Logs
+
+    docker compose logs
+
+For individual services:
+
+    docker compose logs frontend
+    docker compose logs backend
+    docker compose logs mysql
+
+To follow logs in real time:
+
+    docker compose logs -f
+
+### 7. Stop the Application
+
+    docker compose down
+
+This stops and removes the containers while preserving the MySQL data stored in the Docker volume.
+
+To remove the containers and database volume:
+
+    docker compose down -v
+
+
+> **Warning:** `docker compose down -v` deletes the MySQL Docker volume and all stored database data.
+
